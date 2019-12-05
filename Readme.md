@@ -3,7 +3,8 @@
 To use this repository:
 - Fork this repo to your account
 - Clone down your new personal repository to your machine
-- Use `git pull upstream master` to check for any updated content or released solutions
+- cd into your local folder and run the command `git remote add solutions https://github.com/MCSP-toy-problems/MCSP-03-toy-problems.git`
+- Use `git pull solutions master` to check for any updated content or released solutions
 
 Solutions will be released the day of or the day after the toy problem was assigned.
 
