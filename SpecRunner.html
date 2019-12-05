@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Mocha Spec Runner</title>
+  <link rel="stylesheet" href="tests/lib/mocha/mocha.css">
+  <script src="tests/lib/jquery.js"></script>
+  <script src="tests/lib/mocha/mocha.js"></script>
+  <script src="tests/lib/chai/chai.js"></script>
+  <script src="tests/lib/sinon/sinon.js"></script>
+  <script>
+    mocha.setup('bdd');
+    window.expect = chai.expect;
+    $(function() {
+      window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+    });
+  </script>
+  <script src="tests/problems.test.js"></script>
+  <!-- Attach scripts to files that need to run -->
+  <script src="binarySearchArray/binarySearchArray.js"></script>
+
+</head>
+<body>
+<div id="mocha"></div>
+</body>
+</html>
+

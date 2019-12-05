@@ -10,4 +10,6 @@
  * console.log(index); // null
  */
 
-var binarySearch = function(array, target) {};
+var binarySearch = function(array, target) {
+
+};
