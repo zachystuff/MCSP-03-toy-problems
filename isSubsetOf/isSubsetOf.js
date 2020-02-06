@@ -23,17 +23,35 @@
 
 Array.prototype.isSubsetOf = function (arr) {
   // your code here
-  for (let element of this) {
-    if (!arr.includes(element)) {
+  let copySubset = this.slice();
+  // convert all non string elements into strings
+  for (let i = 0; i < copySubset.length; i++) {
+    let element = copySubset[i];
+    if (typeof element !== 'string') {
+      copySubset.splice(i, 1, JSON.stringify(element));
+    }
+  }
+
+  let copySuperset = arr.slice();
+  for (let i = 0; i < copySuperset.length; i++) {
+    let element = copySuperset[i];
+    if (typeof element !== 'string') {
+      copySuperset.splice(i, 1, JSON.stringify(element));
+    }
+  }
+
+  for(let copyEl of copySubset) {
+    if(!copySuperset.includes(copyEl)) {
       return false
     }
   }
+
   return true
 };
 
 var a = ['commit', 'push'];
 console.log(a.isSubsetOf(['commit', 'rebase', 'push', 'blame'])) // true
 
-var b = ['merge', 'reset', 'reset'];
+var b = ['merge', 'reset', 'reset', {a: 1}, [1]];
 
-console.log(b.isSubsetOf(['reset', 'merge', 'add', 'commit'])) // true
+console.log(b.isSubsetOf(['reset', 'merge', 'add', 'commit', {a: 1}, [1]])) // true
