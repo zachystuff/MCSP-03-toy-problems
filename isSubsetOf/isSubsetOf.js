@@ -21,6 +21,19 @@
  * Extra credit: Make the method work for arrays that contain objects and/or arrays as elements.
  */
 
-Array.prototype.isSubsetOf = function(arr) {
+Array.prototype.isSubsetOf = function (arr) {
   // your code here
+  for (let element of this) {
+    if (!arr.includes(element)) {
+      return false
+    }
+  }
+  return true
 };
+
+var a = ['commit', 'push'];
+console.log(a.isSubsetOf(['commit', 'rebase', 'push', 'blame'])) // true
+
+var b = ['merge', 'reset', 'reset'];
+
+console.log(b.isSubsetOf(['reset', 'merge', 'add', 'commit'])) // true
