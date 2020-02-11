@@ -7,4 +7,41 @@
 // "mississippi" => [ [ "i", 4 ], [ "s", 4 ], [ "p", 2 ], [ "m", 1 ] ]
 // "" => [ ]
 
-function characterFrequency() {}
+function characterFrequency(string) {
+    let objLib;
+    let resultArray;
+
+    objLib = {};
+
+    if(string.length === 0) {
+        return []
+    }
+
+    for (const letter of string) {
+        if(!objLib[letter]){
+            objLib[letter] = 0
+        }
+        objLib[letter]++;
+    }
+
+    resultArray = Object.entries(objLib).sort((a , b) => {
+        if(a[1] < b[1]){
+            return 1
+        }
+        if(a[1] > b[1]) {
+            return -1
+        }
+        if(a[1] === b[1]) {
+            if(a[0] > b[0]) {
+                return 1
+            }
+        }
+    })
+     
+    return resultArray;
+}
+
+console.log(characterFrequency("aaabbc"));
+console.log(characterFrequency("mississippi"));
+console.log(characterFrequency(""));
+
