@@ -16,7 +16,7 @@
  * all non-empty string inputs to be valid roman numerals.
  */
 
-var DIGIT_VALUES = {
+const DIGIT_VALUES = {
   I: 1,
   V: 5,
   X: 10,
@@ -26,6 +26,20 @@ var DIGIT_VALUES = {
   M: 1000
 };
 
-var translateRomanNumeral = function(romanNumeral) {
+const translateRomanNumeral = function(romanNumeral) {
   // TODO: Implement me!
+  if (typeof romanNumeral !== 'string') {
+    return null;
+  }
+  let result = 0;
+  let upperCase = romanNumeral.toUpperCase(); 
+  for (let i = 0; i < upperCase.length; i++) {
+    if (DIGIT_VALUES[upperCase[0]] < DIGIT_VALUES[upperCase[1]]) {
+      result -= DIGIT_VALUES[upperCase[0]];
+      i++;
+    }
+    result += DIGIT_VALUES[upperCase[i]];
+  }
+
+  return result
 };
