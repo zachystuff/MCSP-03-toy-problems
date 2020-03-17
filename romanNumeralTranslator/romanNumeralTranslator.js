@@ -34,8 +34,8 @@ const translateRomanNumeral = function(romanNumeral) {
   let result = 0;
   let upperCase = romanNumeral.toUpperCase(); 
   for (let i = 0; i < upperCase.length; i++) {
-    if (DIGIT_VALUES[upperCase[0]] < DIGIT_VALUES[upperCase[1]]) {
-      result -= DIGIT_VALUES[upperCase[0]];
+    if (DIGIT_VALUES[upperCase[i]] < DIGIT_VALUES[upperCase[i+1]]) {
+      result -= DIGIT_VALUES[upperCase[i]];
       i++;
     }
     result += DIGIT_VALUES[upperCase[i]];
