@@ -38,7 +38,21 @@ var Tree = function(value) {
 
 Tree.prototype.countLeaves = function() {
   // TODO: implement me!
+  this.store = 0;
+  const counter = (node) => {
+    if ( node.children.length === 0) {
+      this.store+=1
+    } else if (node.children.length > 0) {
+      for (let i = 0; i < node.children.length - 1; i++) {
+         return counter(node.children[i]);
+      }
+    }
+  }
+  counter(this);
+  return this.store;
+
 };
+
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
@@ -52,7 +66,7 @@ Tree.prototype.addChild = function(child) {
   if (!child || !(child instanceof Tree)) {
     child = new Tree(child);
   }
-
+  
   if (!this.isDescendant(child)) {
     this.children.push(child);
   } else {
@@ -93,3 +107,12 @@ Tree.prototype.removeChild = function(child) {
     throw new Error("That node is not an immediate child of this tree");
   }
 };
+var root = new Tree();
+ console.log(root.countLeaves()); // 1
+ root.addChild(new Tree());
+ console.log(root.countLeaves()); // still 1
+ root.addChild(new Tree());
+ root.children[0].addChild(new Tree());
+ root.children[0].addChild(new Tree());
+ root.children[0].children[0].addChild(new Tree());
+ console.log(root.countLeaves()); // 3
